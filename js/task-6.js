@@ -16,31 +16,30 @@ const boxes = document.querySelector("#boxes")
 
 function createBoxes(amount) {
 
-
-  const divToDelete = document.querySelectorAll(".newDiv");
-
-  divToDelete.forEach(div => {
-    div.remove();
-  });
-
-  
-let width = 20
-let height = 20
-
-for (let i = 0; i < amount; i++) {
-
-  width += 10;
-  height += 10;
+  let width = 30;
+  let height = 30;
+  let markup = '';
 
 
-  const div = document.createElement("div");
-  div.style.width = `${width}px`;
-  div.style.height = `${height}px`;
-  div.classList.add("newDiv")
-  div.style.backgroundColor = getRandomHexColor();
-  boxes.append(div)
+  for (let i = 0; i < amount; i++) {
+
+      const color = getRandomHexColor();
+      markup +=`
+      <div style="width: ${width}px; height: ${height}px; background-color: ${color};" class="newDiv"></div>
+    `;
+
+      width += 10;
+      height += 10;
+  }
+
+
+  boxes.innerHTML = markup;
 }
-}
+
+
+
+
+
 
 
 
@@ -55,6 +54,11 @@ createButton.addEventListener("click", () => {
 })
 
 
+
+
+
+
+
 destroyButton.addEventListener("click", () => {
 
   const divToDelete = document.querySelectorAll(".newDiv");
@@ -65,9 +69,6 @@ destroyButton.addEventListener("click", () => {
   });
 
 })
-
-
-
 
 
 

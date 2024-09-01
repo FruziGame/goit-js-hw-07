@@ -33,25 +33,15 @@ gallery.style.gap = "20px"
 
 
 
+const result = images
+  .map((e) => 
+
+     `<li>
+     <img src="${e.url}" alt="${e.alt}" width="200">
+     </li>`)
+
+  .join("");
+    
 
 
-const result = images.map(image => {
-
-  const newImage = document.createElement("img");
-  const newLi = document.createElement("li");
-
-  newImage.setAttribute("src", image.url)
-  newImage.setAttribute("alt", image.alt)
-  newImage.setAttribute("width", "200")
-
-
-  newLi.appendChild(newImage)
-  gallery.appendChild(newLi)
-  
-})
-
-
-
-
-
-
+  gallery.insertAdjacentHTML("afterbegin", result)
